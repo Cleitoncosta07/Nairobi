@@ -1,0 +1,16 @@
+{
+  "name": "Nairobi",
+  "version": "1.4.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./index"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "baileys": "^6.7.18",
+    "readline": "^1.3.0"
+  }
+}

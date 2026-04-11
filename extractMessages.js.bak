@@ -1,0 +1,41 @@
+const { PREFIX } = require("./settings.json")
+
+exports.extractMessages = async (messageDetails, sock) => {
+
+  const extendedTextMessage = messageDetails?.message?.extendedTextMessage?.text;
+  const textConversation = messageDetails?.message?.conversation;
+
+  const finalMessageText = extendedTextMessage || textConversation;
+
+  const from = messageDetails?.key?.remoteJid;
+
+  const isCommand = finalMessageText?.startsWith(PREFIX) ?? false;
+
+  const commandName = isCommand ? finalMessageText.slice(1).trim().split(/ +/).shift().toLowerCase() : "";
+
+  const args = isCommand ? finalMessageText.split(/ +/).slice(1).join(" ") : "";
+
+  const userName = messageDetails ? messageDetails.pushName : ""
+
+  const participant = messageDetails?.key?.remoteJid.includes("@g.us") ? messageDetails?.key?.participant : messageDetails?.key?.remoteJid;
+
+  const userMention = messageDetails?.message?.extendedTextMessage?.contextInfo?.mentionedJid?.[0] || messageDetails?.message?.extendedTextMessage?.contextInfo?.participant;
+
+  const numberUserMention = userMention?.split("@")[0];
+
+  const BOT_PHONE = sock.user.id.split(":")[0] + "@s.whatsapp.net";
+
+  return {
+    BOT_PHONE,
+    finalMessageText,
+    from,
+    isCommand,
+    commandName,
+    args,
+    userName,
+    participant,
+    userMention,
+    numberUserMention
+  }
+
+}
