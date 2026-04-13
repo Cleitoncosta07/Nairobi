@@ -1,0 +1,17 @@
+{
+  "name": "nairobi-bot",
+  "version": "3.0.0",
+  "description": "🤖 Nairobi Bot - Sistema avançado de automação para WhatsApp com IA integrada, comandos inteligentes, downloads multimídia e arquitetura profissional escalável.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "author": "Rony | Spectrum (Base original) - Upgrade by Nairobi System",
+  "license": "MIT",
+  "dependencies": {
+    "@whiskeysockets/baileys": "7.0.0-rc.3",
+    "@adiwajshing/keyed-db": "^0.2.4",
+    "pino": "^7.11.0"
+  }
+}
